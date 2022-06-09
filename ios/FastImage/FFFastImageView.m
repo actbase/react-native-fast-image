@@ -154,7 +154,18 @@
             }
             return [mutableRequest copy];
         }];
+
         SDWebImageContext *context = @{SDWebImageContextDownloadRequestModifier : requestModifier};
+        if (_source.size) {
+            NSInteger w = [[_source.size valueForKey:@"width"] integerValue];
+            NSInteger h = [[_source.size valueForKey:@"height"] integerValue];
+            if (w && h) {
+                CGFloat scale = UIScreen.mainScreen.scale; // Will be 2.0 on 6/7/8 and 3.0 on 6+/7+/8+ or later
+                CGSize thumbnailSize = CGSizeMake(w * scale, h * scale); // Thumbnail will bounds to (200,200) points
+                context = @{SDWebImageContextImageThumbnailPixelSize : @(thumbnailSize) };
+            }
+        }
+       
         
         // Set priority.
         SDWebImageOptions options = SDWebImageRetryFailed | SDWebImageHandleCookies;
