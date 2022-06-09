@@ -49,6 +49,7 @@ export type Source = {
     headers?: { [key: string]: string }
     priority?: Priority
     cache?: Cache
+    size?: { width: number; height: number; }
 }
 
 export interface OnLoadEvent {
