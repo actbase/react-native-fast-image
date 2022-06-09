@@ -22,12 +22,16 @@ typedef NS_ENUM(NSInteger, FFFCacheControl) {
 @property (nonatomic) FFFPriority priority;
 // headers for the image request
 @property (nonatomic) NSDictionary *headers;
+
+@property (nonatomic) NSDictionary *size;
+
 // cache control mode
 @property (nonatomic) FFFCacheControl cacheControl;
 
 - (instancetype)initWithURL:(NSURL *)url
                    priority:(FFFPriority)priority
                     headers:(NSDictionary *)headers
+                       size:(NSDictionary *)size
                cacheControl:(FFFCacheControl)cacheControl;
 
 @end
