@@ -42,8 +42,9 @@ RCT_ENUM_CONVERTER(FFFCacheControl, (@{
             headers = nil;
         }
     }
-    
-    FFFastImageSource *imageSource = [[FFFastImageSource alloc] initWithURL:uri priority:priority headers:headers cacheControl:cacheControl];
+
+    NSDictionary *size = [self NSDictionary:json[@"size"]];
+    FFFastImageSource *imageSource = [[FFFastImageSource alloc] initWithURL:uri priority:priority headers:headers size:size cacheControl:cacheControl];
     
     return imageSource;
 }
